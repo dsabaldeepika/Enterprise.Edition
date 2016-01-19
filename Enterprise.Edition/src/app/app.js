@@ -1,12 +1,13 @@
 /// <reference path="home/home.html" />
+/// <reference path="~/src/lib/angular/angular.js" />
 (function () {
     'use strict';
-    var app = angular.module('enterPrise', [
+    var app = angular.module('app', ['common','enterprise', 'platform',
         // Angular modules
-        'ngRoute'
+        'ngRoute',
 
         // 3rd Party Modules
-        
+        'ui.bootstrap'
     ]);
 
     app.config(['$routeProvider', configRoutes]);
@@ -14,13 +15,19 @@
     function configRoutes($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'src/app/home/home.html',
-                controller: 'HomeCtrl',
+                templateUrl: 'src/app/enterprise/enterprise.html',
+                controller: 'enterpriseCtrl',
                 controllerAs: 'vm'
             })
         .when('/', {
-            templateUrl: 'src/app/league/league.html',
-            controller: 'HomeCtrl',
+            templateUrl: 'src/app/billing/partials/billing.html',
+            controller: 'billingCtrl',
+            controllerAs: 'vm'
+        })
+
+         .when('/', {
+        templateUrl: 'src/app/configuration/partials/configuration.html',
+        controller: 'configurationCtrl',
             controllerAs: 'vm'
         });
 
